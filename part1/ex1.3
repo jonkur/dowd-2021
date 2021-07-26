@@ -1,0 +1,10 @@
+Secret message is: 'You can find the source code here: https://github.com/docker-hy'
+
+commands used:
+docker run --name kontti devopsdockeruh/simple-web-service:ubuntu
+
+in another terminal:
+docker exec -it kontti bash
+
+inside the container:
+tail -f ./text.log

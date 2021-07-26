@@ -1,0 +1,14 @@
+To start the container:
+docker run -d -it --name websearch ubuntu sh -c 'echo "Input website:"; read website; echo "Searching..."; sleep 1; curl http://$website;'
+
+To exec inside the container:
+docker exec -it websearch bash
+
+Inside the container:
+apt update
+apt install curl
+
+Back outside of the container:
+docker attach websearch
+
+And now typing a web address in the prompt will print the html of that website.
