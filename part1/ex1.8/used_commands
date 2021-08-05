@@ -1,0 +1,5 @@
+# To build the image, in the same directory as the Dockerfile
+docker build . -t curler
+
+# To run the container, must use the -i and -t flags so that user input can be inserted
+docker run -it curler

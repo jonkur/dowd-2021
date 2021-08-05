@@ -1,0 +1,5 @@
+# To build the image, in the same directory as the Dockerfile
+docker build . -t web-server
+
+# To run the web server
+docker run web-server
