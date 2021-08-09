@@ -1,0 +1,4 @@
+# To start the devopsdoceruh/simple-web-service:ubuntu container mapped to the host machine port 8080 (that port must be free!), the cmd is:
+docker run -p 8080:8080 devopsdockeruh/simple-web-service:ubuntu server
+
+# Navigating to localhost:8080 in the browser should now result in a response from that server
