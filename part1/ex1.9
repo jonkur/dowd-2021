@@ -1,0 +1,7 @@
+# Bind mounting text.log file so that timestamps are created in a file in the filesystem instead of just inside the container
+
+# Create the file on the filesystem, otherwise the next command will create a folder
+touch text.log
+
+# Start the container with the following cmd, in the same folder as text.log file
+docker run -v "$(pwd)/text.log:/usr/src/app/text.log" devopsdockeruh/simple-web-service:ubuntu
