@@ -1,0 +1,5 @@
+# To build the image, in this folder
+docker build -t spring-example .
+
+# Launching the app, 8080 must be free on host
+docker run -p 8080:8080 spring-example
