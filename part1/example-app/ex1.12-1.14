@@ -1,0 +1,5 @@
+This folder contains the exercises 1.12 - 1.14.
+
+Dockerfiles are in the frontend and backend folders.
+
+Files including the commands used for building both images and running them are there as well.

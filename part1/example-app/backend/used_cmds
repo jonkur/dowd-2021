@@ -1,0 +1,5 @@
+# To build the image, this folder
+docker build -t example-backend .
+
+# Launch the app, 8080 must be free
+docker run -p 8080:8080 example-backend
