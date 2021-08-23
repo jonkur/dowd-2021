@@ -1,0 +1,2 @@
+1. Dockerfiles for frontend and backend are expected to be at ../../part1/example-app/..
+2. Run "docker-compose up"
