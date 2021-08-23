@@ -1,0 +1,10 @@
+version: '3.5'
+
+services:
+
+  simple-web-service-ubuntu:
+    image: devopsdockeruh/simple-web-service:ubuntu
+    volumes:
+      - type: bind
+        source: ./text.log
+        target: /usr/src/app/text.log

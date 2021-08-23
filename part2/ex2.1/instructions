@@ -1,0 +1,3 @@
+1. Make sure that the file text.log exist in this folder
+2. Run docker-compose up
+3. Loggin will be appended to text.log on host
