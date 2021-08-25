@@ -1,0 +1,39 @@
+version: '3.5'
+
+services:
+  backend:
+    image: example-backend
+    build: '../ex2.4/backend/'
+    environment:
+      - PORT=8080
+      - REQUEST_ORIGIN=http://localhost:5000
+      - REDIS_HOST=redis
+      - POSTGRES_HOST=db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=examplepass
+      - POSTGRES_DATABASE=bedb
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+
+
+  frontend:
+    image: example-frontend
+    build: '../ex2.4/frontend/'
+    environment:
+      - REACT_APP_BACKEND_URL=backend:8080
+    ports:
+      - 5000:5000
+
+
+  redis:
+    image: redis:6.2.5
+
+
+  db: 
+    image: postgres:13.4
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=examplepass
+      - POSTGRES_DB=bedb
