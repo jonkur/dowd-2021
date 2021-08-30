@@ -12,6 +12,8 @@ services:
       - 8080:8080
 
 
+  # NOTE: Frontend needs to be built each time the container runs, not optimal but ensures the env variable for the backend URL gets applied each time
+  # Await for the "INFO: Accepting connetions..." message from the frontend container before navigating to localhost
   frontend:
     image: example-frontend
     build: 

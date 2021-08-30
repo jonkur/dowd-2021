@@ -1,0 +1,8 @@
+Every button is now working.
+
+No further changes had to be made for the nginx-configured button to work. The /api endpoint had already been configured properly
+in exercise 2.8, so it worked out of the box here.
+
+The Dockerfiles used are in the folder ex2.4 (frontend and backend folders). I had to clone those to be part of this repository, as for
+some reason I couldn't get docker-compose to fetch them from their github repositories (got a weird error that I spent a good amount of time
+trying to solve, to no avail. Seems to have something to do with my local setup.)

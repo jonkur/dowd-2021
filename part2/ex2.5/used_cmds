@@ -1,5 +1,10 @@
 Solution to this exercise is rather simple, as the load balancer has already been configured.
 
-In the scaling-exercise folder, simply kick the containers up with the scale flag, 3 instances of the compute container should be enough so that the test passes in the browser:
+In the scaling-exercise folder, simply kick the containers up with the scale flag. 
+3 instances of the compute container should be enough so that the test passes in the browser.
+
+Run with
 
 docker-compose up --scale compute=3
+
+Then navigate to localhost:3000 to test it out.
