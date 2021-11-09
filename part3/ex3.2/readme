@@ -1,0 +1,10 @@
+A containerized build service that utilizes the existing docker host via the docker.sock.
+To start the service:
+
+1. Build the image with 'docker build -t <image tag> .' in this directory
+
+2. Run with 'docker run -it -v /var/run/docker.sock:/var/run/docker.sock <image tag>'
+
+Sharing the host docker.sock via a volume (the -v flag) is necessary for the target app building to work.
+You will be prompted for your docker login credentials, then the address of the repository you wish to build (must contain a Dockerfile)
+and lastly the target repository for the built image on Dockerhub, which you must provide in the form <username>/<repository name>
