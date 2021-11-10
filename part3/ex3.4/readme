@@ -1,0 +1,12 @@
+Image sizes before Dockerfile changes:
+example-frontend: 490MB
+example-backend:  1.01GB
+
+Image sizes after Dockerfile changes:
+example-frontend: 446MB
+example-backend:  348MB
+
+Further explanation:
+For example-backend, I was using the golang 1.16 base image before the changes, which caused the image to become 1GB large.
+Both images could probably have been trimmed even further by removing more unnecessary packages, but this will have to suffice for now.
+The app is not fully functioning using these images alone since there is no image for database or redis included.
