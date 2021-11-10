@@ -1,0 +1,54 @@
+version: '3.5'
+
+services:
+  backend:
+    image: example-backend
+    build: './backend/'
+    environment:
+      - REQUEST_ORIGIN=http://localhost:80
+      - PORT=8080
+      - POSTGRES_HOST=db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=unsafetestpass
+      - POSTGRES_DATABASE=postgres
+      - REDIS_HOST=redis
+    depends_on:
+      - db
+      - redis
+
+
+  # no need for env variables for frontend, backend url is /api by default
+  # NOTE: Frontend needs to be built each time the container runs, not optimal but ensures the env variable for the backend URL gets applied each time
+  # Await for the "INFO: Accepting connetions..." message from the frontend container before navigating to localhost
+  frontend:
+    image: example-frontend
+    build: './frontend/'
+
+
+  db:
+    image: postgres:13.2-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: unsafetestpass
+      PKDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - ./database:/var/lib/postgresql/data
+
+
+  nginx-proxy:
+    image: nginx:1.21.1
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 80:80
+    depends_on:
+      - frontend
+      - backend
+
+
+  redis:
+    image: redis:6.2.5
+
+
+volumes:
+  database:
