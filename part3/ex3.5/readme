@@ -1,0 +1,18 @@
+Image sizes before Dockerfile changes with base node and golang images:
+example-frontend (node:14 base): 1.16GB
+example-backend (golang:1.16 base):  1.01GB
+
+Sizes after the changes in the previous task (3.4):
+example-frontend (ubuntu:18.04 base, manual node install and trimmed down afterwards): 446MB
+example-backend (ubuntu:18.04 base, manual go install and trimmed down after building): 348MB
+
+Image sizes after using Alpine base for both node and go (ONLY base image changed, no further trimming):
+example-frontend (node:14-alpine3.13 base): 336MB
+example-backend (golang:1.17.3-alpine3.13 base):  467MB
+
+Further explanation:
+Here we can see the sizes of three different versions of each image: First with node and golang bases (not sure if they are ubuntu-based or not, 
+they seem to be using buildpack-deps:bullseye-scm and buildpack-deps:stretch as their bases). Then, those produced in the last exercise by
+manually installing the dependencies on ubuntu:18.04 base and then manually trimming off unnecessary stuff such as installed Go binaries after
+the app has been built. Lastly, we have the one based off of ready-made alpine images for Node and Go respectively, which have not been manually
+trimmed afterwards.

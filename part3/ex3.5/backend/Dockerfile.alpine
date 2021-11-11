@@ -1,0 +1,21 @@
+# Start with the golang:1.16 base image
+FROM golang:1.17.3-alpine3.13
+
+# Working dir
+WORKDIR /go/src/app/
+
+# Copy everything from this dir to image
+COPY . .
+
+# ENVs
+ENV PORT=8080
+ENV REQUEST_ORIGIN=http://localhost:5000
+
+# Build
+RUN go build && \
+    adduser -D nonrootuser
+
+USER nonrootuser
+
+# CMD for launching
+CMD ["./server"]

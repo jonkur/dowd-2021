@@ -1,0 +1,21 @@
+# Use ubuntu 18.04 image from dockerhub as base
+FROM node:14-alpine3.13
+
+# Set workdir
+WORKDIR /usr/src/app
+
+# Copy the app source into image, must be in that folder currently
+COPY . .
+
+# Install curl, then node v14
+RUN npm install && \
+    npm install -g serve && \
+    adduser -D nonrootuser && \
+    chown nonrootuser /usr/src/app
+
+USER nonrootuser
+
+#ENV REACT_APP_BACKEND_URL=localhost:8080
+
+# Always build the app upon running to apply env variables & use serve when launching the container
+CMD REACT_APP_BACKEND_URL=http://localhost:8080 npm run build ; serve -s -l 5000 build
