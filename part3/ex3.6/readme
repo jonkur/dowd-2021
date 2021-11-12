@@ -1,0 +1,12 @@
+Both frontend and backend are now using multi-stage builds. See Dockerfiles in their respective folders.
+Everything works flawlessly with the new images, use
+
+docker-compose up --build
+
+in this folder to make sure the new, small images are running. Frontend should now be running at localhost:80
+
+Image sizes after multi-stage building:
+example-frontend =  24.4MB
+example-backend  =  18MB
+
+Frontend uses alpine nginx server base image, backend is built using an empty scratch image.
