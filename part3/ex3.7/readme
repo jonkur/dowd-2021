@@ -1,0 +1,16 @@
+In this exercise I have optimized the docker image for the project I dockerized in ex 3.1
+
+The old Dockerfile is in this same folder by the name Dockerfile.old
+The old image size was 628MB.
+
+The new Dockerfile is also in the same folder.
+After building, the new image size is 77.6MB. Most of that is taken up by the custom JRE containing only the
+Java libraries that this app is dependent on.
+It is about 50MB smaller than I could make it with any of the ready-made JRE images I could find on Docker hub.
+The new image also has a non-root user active while running the app, for added security.
+
+Build in this folder with 
+docker build -t kysymyspankki:alpine .
+
+And run with
+docker run -p 4567:4567 kysymyspankki:alpine
